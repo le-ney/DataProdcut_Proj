@@ -1,4 +1,3 @@
-
 library(UsingR)
 data(galton)
 library(ggplot2)
