@@ -14,12 +14,12 @@ shinyUI(pageWithSidebar(
                 
         ),
         mainPanel(
-                h3('Height Calculator tool'),
+                h3('Height Calculator Tool'),
                 h5('Description:'),
                 p('This is a children\'s adult height prediction calculator based on the 
                   linear regression analysis method. The Galton\'s data set which comprises 
                   of the average heights of parents and their children has been used for the regression 
-                  model.Beside this calculator, another simply
+                  model. Beside this calculator, another simply
                   way to predict the adult height for a children is simply double the 
                   height achieved by the second birthday of the child.'),
                 h5('User Instructions:'),
