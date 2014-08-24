@@ -1,4 +1,4 @@
-#require("UsingR")
+
 library(UsingR)
 data(galton)
 library(ggplot2)
@@ -14,7 +14,7 @@ shinyServer(
         function(input, output) {
                 predictedHeight<- reactive({childHeight(input$partent)})
                 output$inputVal<- renderPrint({input$partent})
-                output$result <- renderPrint({paste(round(predictedHeight(), 2),'')})
+                output$result <- renderPrint({paste(round(predictedHeight(), 2),'(intercept)')})
                 output$plot <- renderPlot({
                         p <- ggplot(galton_with_pred, aes(x = parent, y = child)) + 
                                 geom_point() +
@@ -22,7 +22,8 @@ shinyServer(
                                 geom_ribbon(aes(y = fit, ymin = lwr, ymax = upr, fill = 'prediction'),
                                             alpha = 0.2) +
                                 scale_fill_manual('Interval', values = c('green', 'blue')) +
-                                theme(legend.position = c(0.20, 0.85))
+                                ggtitle("Child height vs parent height") +
+                                theme(legend.position = c(0.20, 0.85),plot.title = element_text(lineheight=.8, face="bold",colour="red"))
                         newdata <- data.frame(parent = input$partent, child= round(predictedHeight(), 2))
                         p + geom_point(data=newdata,colour="red",size=6)
                         
